@@ -1,0 +1,53 @@
+---
+title: "Racism in US Justice System"
+output: html_document
+---
+
+```{r echo = F}
+source("analysis.r")
+
+library(knitr)
+```
+
+## Introduction & Summary Information
+
+Nowadays, as people are paying more attention to eliminate the racism, the racial equality in justice system is becoming a critical part of this movement. Inspired by this, it is very important to explore whether there exists racism in US justice system. Therefore, in this research, we will analyze this problem in the following aspects.
+* 
+
+Per these aspects above, here are somme key indices as reference.
+
+* Across the country, how is the proportion between black jailed population and total jailed population changed from 1985 to 2010? Analyze the change rate by comparing 1985 data and 2010 data.
+<br /> __Answer:__ `r black_jp_change`
+* Across the country, how is the proportion between black population and total population changed from 1990 to 2010? Analyze the change rate by comparing 1990 data and 2010 data. (This population proportion is a good indicator, showing whether the jailed population proportion above changes normally.)
+<br /> __Answer:__ `r black_tp_2010`
+* Across the country, how is the proportion between white jailed population and total jailed population changed from 1985 to 2010? Analyze the change rate by comparing 1985 data and 2010 data.
+<br /> __Answer:__ `r white_jp_change`
+* Across the country, how is the proportion between white population and total population changed from 1990 to 2010? Analyze the change rate by comparing 1990 data and 2010 data. (This population proportion is a good indicator, showing whether the jailed population proportion above changes normally.)
+<br /> __Answer:__ `r white_tp_2010`
+* Recently (in 2010), among these four regions ("Midwest", "Northeast", "South", "West"), which region has the highest black jailed population over total jailed population proportion?
+<br /> __Answer:__ `r high_region`
+
+## Trends over time chart
+
+According our analysis result above, south region has the highest black jailed population over total jailed population proportion in 2010. Thus, it is very meaningful to take a deeper look about the trend of jailed population proportion in this region over past 25 years (1985-2010). With the trend of black & white jailed population proportion, we can make some inference about equality of the justice system in south region.
+
+```{r echo=F}
+source("analysis.r")
+prop_trend
+```
+
+We make x-axis represent years, and y-axis represent proportion value; through this way, we can identify the proportion change over years clearly. From the chart, we can see that during past 25 years, the trend of black jailed population proportion is always higher than that of white. From this pattern, we may be able to make some hypothesis about possible reasons at back of this. For example, the local justice system may not treat people from different races equally.
+
+## Variable comparison chart
+
+At the same time, it is also meaning to check whether there exists strong positive relationship between white jailed population and total white population at each county. If such strong positive relationship does exist, it partially proves that the current justice system is "relatively fair". The reason is that smaller number of total population normally causes smaller number of jailed population, and vice versa. If such strong positive relationship does not exist, then it further implies that there exists "unfairness" in the current justice system.
+
+```{r echo=F}
+source("analysis.r")
+comparison
+```
+
+We plot comparison chart of white jailed population (y-axis) vs. total white population (x-axis) at each county; through setting axes in this way, we can identify the relationship between these two variables clearly by linear regression. Also, from the chart, we can see that the strong positive relationship described above does not exist; more specifically, we can see many counties with much more white population having much smaller white jailed population. This pattern, to some extent, shows that there exists "unfairness" in the current justice system.
+
+## Map
+Finally, it is also very meaningful to visualize the recent(2010) black jailed population vs. total black population proportion in each county through a map. This can show our users which counties have higher black jailed population, and it is more possible for these counties to have "unfair" justice system.
